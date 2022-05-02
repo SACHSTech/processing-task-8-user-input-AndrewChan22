@@ -2,7 +2,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * User input
+ * User input using mouse and keyboard
  * @author: A. Chan
  */
 public class Sketch extends PApplet {
