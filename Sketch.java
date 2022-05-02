@@ -258,4 +258,9 @@ public class Sketch extends PApplet {
       downPressed = false;
     }
   }
+
+  public void mousePressed() {
+    randColour();
+    noDuplicates();
+  }
 }
