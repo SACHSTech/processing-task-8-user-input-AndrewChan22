@@ -64,6 +64,7 @@ public class Sketch extends PApplet {
     // draw black background
     background(r, g, b);
 
+    // resets position of circle if mouse is pressed to the coordinates of the mouse
     if (mousePressed) {
       fltCircleX = mouseX;
       fltCircleY = mouseY;
@@ -79,7 +80,6 @@ public class Sketch extends PApplet {
     image(dvdColours[randNum], fltDvdX, fltDvdY);
 
     // circle right X edge detection
-    
     if (fltCircleX >= 975) {
       circleSpeedX = -circleSpeedX;
       fltCircleX = 975;
@@ -103,14 +103,18 @@ public class Sketch extends PApplet {
       fltCircleY = 0;
     }
 
-    // Dvd right X edge detection, reverse X speed if image reaches boundary
+    // Checks if key is pressed
     if (keyPressed) {
+
+      // if 'a' or left arrow is pressed, move DVD logo to the left
       if (keyCode == LEFT || key == 'a') {
           fltDvdX += -5;
           if (fltDvdX <= 0) {
             fltDvdX = 0;
           }
       }   
+
+      // if 'd' or right arrow is pressed, move DVD logo to the right
       if (keyCode == RIGHT || key == 'd') {
           fltDvdX += 5;
           if (fltDvdX >= 553) {
@@ -118,6 +122,7 @@ public class Sketch extends PApplet {
           }
       }
 
+      // if 'w' or up arrow is pressed, move DVD logo upwards
       if (keyCode == UP || key == 'w') {
           fltDvdY += -5;
           if (fltDvdY <= 0) {
@@ -125,41 +130,48 @@ public class Sketch extends PApplet {
           }
       }
 
+      // if 's' or down arrow is pressed, move DVD logo downwards
       if (keyCode == DOWN || key == 's') {
           fltDvdY += 5;
           if (fltDvdY >= 600) {
             fltDvdY = 600;
           }
       }
+
+      // if 'n' is pressed, change DVD logo colour
       if (key == 'n') {
         randColour();
         noDuplicates();
       }
+
+      // if 'r' is pressed, change background to red
       if (key == 'r') {
         r = 254;
         g = 57;
         b = 57;
       }
+
+      // if 'b' is pressed, change background to blue
       if (key == 'b') {
         r = 133;
         g = 201;
         b = 232;
       }
       
+      // if 'g' is pressed, change background to green
       if (key == 'g') {
         r = 0;
         g = 129;
         b = 64;
       }
+
+      // if 'SHIFT' is pressed, reset background to black
       if (keyCode == SHIFT) {
         r = 0;
         g = 0;
         b = 0;
       }
     }
-
-  
-    
   }
   
   // define other methods down here.
@@ -189,10 +201,16 @@ public class Sketch extends PApplet {
     previousColour = randNum;
   }
 
+  /**
+   * Uses mouseWheel user input and draws an image to the screen
+   */
   public void mouseWheel() {
     image(Fabroa, mouseX, mouseY);
   }
 
+  /**
+   * If mouse is dragged, reset position of circle to the current mouse coordinates
+   */
   public void mouseDragged() {
     fltCircleX = mouseX;
     fltCircleY = mouseY;
