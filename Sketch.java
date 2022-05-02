@@ -54,6 +54,7 @@ public class Sketch extends PApplet {
 
     // randomize the starting dvd logo colour
     randColour();
+    noDuplicates();
   }
 
   /**
@@ -61,10 +62,10 @@ public class Sketch extends PApplet {
    */
   public void draw() {
 
-    // draw black background
+    // draw background
     background(r, g, b);
 
-    // resets position of circle if mouse is pressed to the coordinates of the mouse
+    // reset position of circle if mouse is pressed to the coordinates of the mouse
     if (mousePressed) {
       fltCircleX = mouseX;
       fltCircleY = mouseY;
@@ -76,7 +77,7 @@ public class Sketch extends PApplet {
     fltCircleX += circleSpeedX;
     fltCircleY += circleSpeedY;
 
-    // randomly select from a list of dvd colours
+    // randomly select from an array of dvd colours
     image(dvdColours[randNum], fltDvdX, fltDvdY);
 
     // circle right X edge detection
@@ -209,7 +210,7 @@ public class Sketch extends PApplet {
   }
 
   /**
-   * If mouse is dragged, reset position of circle to the current mouse coordinates
+   * If mouse is dragged, reset position of circle to the current mouse coordinates 
    */
   public void mouseDragged() {
     fltCircleX = mouseX;
