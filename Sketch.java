@@ -26,6 +26,10 @@ public class Sketch extends PApplet {
   int randNum;
   int previousColour;
 
+  int r = 0;
+  int g = 0;
+  int b = 0;
+
   /**
    * Called once at the beginning of execution, put your size all in this method
    */
@@ -46,7 +50,6 @@ public class Sketch extends PApplet {
     dvdColours[2] = loadImage("Yellow.png");
     dvdColours[3] = loadImage("Purple.png");
     dvdColours[4] = loadImage("Cyan.png");
-    background = loadImage("Black background.png");
     Fabroa = loadImage("Fabroa.png");
 
     // randomize the starting dvd logo colour
@@ -59,7 +62,12 @@ public class Sketch extends PApplet {
   public void draw() {
 
     // draw black background
-    image(background, 0, 0);
+    background(r, g, b);
+
+    if (mousePressed) {
+      fltCircleX = mouseX;
+      fltCircleY = mouseY;
+    }
 
     // draw moving circle
     ellipse(fltCircleX, fltCircleY, 50, 50);
@@ -123,6 +131,31 @@ public class Sketch extends PApplet {
             fltDvdY = 600;
           }
       }
+      if (key == 'n') {
+        randColour();
+        noDuplicates();
+      }
+      if (key == 'r') {
+        r = 254;
+        g = 57;
+        b = 57;
+      }
+      if (key == 'b') {
+        r = 133;
+        g = 201;
+        b = 232;
+      }
+      
+      if (key == 'g') {
+        r = 0;
+        g = 129;
+        b = 64;
+      }
+      if (keyCode == SHIFT) {
+        r = 0;
+        g = 0;
+        b = 0;
+      }
     }
 
   
@@ -156,34 +189,13 @@ public class Sketch extends PApplet {
     previousColour = randNum;
   }
 
-  public void mousePressed() {
-
-    if (mousePressed) {
-
-      randColour();
-      noDuplicates();
-      
-    }
-    
-  }
-
   public void mouseWheel() {
-    
-    image(Fabroa, 402, 264);
-
+    image(Fabroa, mouseX, mouseY);
   }
 
   public void mouseDragged() {
-
-    ellipse(fltCircleX, fltCircleY, 50, 50);
-
-    fltCircleX += circleSpeedX;
-    fltCircleY += circleSpeedY;
-
+    fltCircleX = mouseX;
+    fltCircleY = mouseY;
   }
 
-  public void mouseMoved() {
-
-    background (255, 255, 255);
-  }
 }
