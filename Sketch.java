@@ -30,6 +30,11 @@ public class Sketch extends PApplet {
   int g = 0;
   int b = 0;
 
+  boolean upPressed = false;
+  boolean downPressed = false;
+  boolean leftPressed = false;
+  boolean rightPressed = false;
+
   /**
    * Called once at the beginning of execution, put your size all in this method
    */
@@ -106,9 +111,8 @@ public class Sketch extends PApplet {
 
     // Checks if key is pressed
     if (keyPressed) {
-
       // if 'a' or left arrow is pressed, move DVD logo to the left
-      if (keyCode == LEFT || key == 'a') {
+      if (leftPressed) {
           fltDvdX += -5;
           if (fltDvdX <= 0) {
             fltDvdX = 0;
@@ -116,7 +120,7 @@ public class Sketch extends PApplet {
       }   
 
       // if 'd' or right arrow is pressed, move DVD logo to the right
-      if (keyCode == RIGHT || key == 'd') {
+      if (rightPressed) {
           fltDvdX += 5;
           if (fltDvdX >= 553) {
             fltDvdX = 553;
@@ -124,7 +128,7 @@ public class Sketch extends PApplet {
       }
 
       // if 'w' or up arrow is pressed, move DVD logo upwards
-      if (keyCode == UP || key == 'w') {
+      if (upPressed) {
           fltDvdY += -5;
           if (fltDvdY <= 0) {
             fltDvdY = 0;
@@ -132,7 +136,7 @@ public class Sketch extends PApplet {
       }
 
       // if 's' or down arrow is pressed, move DVD logo downwards
-      if (keyCode == DOWN || key == 's') {
+      if (downPressed) {
           fltDvdY += 5;
           if (fltDvdY >= 600) {
             fltDvdY = 600;
@@ -152,6 +156,13 @@ public class Sketch extends PApplet {
         b = 57;
       }
 
+      // if 'g' is pressed, change background to green
+      if (key == 'g') {
+        r = 0;
+        g = 129;
+        b = 64;
+      }
+
       // if 'b' is pressed, change background to blue
       if (key == 'b') {
         r = 133;
@@ -159,12 +170,6 @@ public class Sketch extends PApplet {
         b = 232;
       }
       
-      // if 'g' is pressed, change background to green
-      if (key == 'g') {
-        r = 0;
-        g = 129;
-        b = 64;
-      }
 
       // if 'SHIFT' is pressed, reset background to black
       if (keyCode == SHIFT) {
@@ -174,6 +179,7 @@ public class Sketch extends PApplet {
       }
     }
   }
+  
   
   // define other methods down here.
 
@@ -217,4 +223,33 @@ public class Sketch extends PApplet {
     fltCircleY = mouseY;
   }
 
+  public void keyPressed() {
+    if (keyCode == LEFT || key == 'a')  {
+      leftPressed = true;
+    }
+    else if (keyCode == RIGHT || key == 'd') {
+      rightPressed = true;
+    }
+    else if (keyCode == UP || key == 'w') {
+      upPressed = true;
+    }
+    else if (keyCode == DOWN || key == 's') {
+      downPressed = true;
+    }
+  }
+
+  public void keyReleased() {
+    if (keyCode == LEFT || key == 'a')  {
+      leftPressed = false;
+    }
+    else if (keyCode == RIGHT || key == 'd') {
+      rightPressed = false;
+    }
+    else if (keyCode == UP || key == 'w') {
+      upPressed = false;
+    }
+    else if (keyCode == DOWN || key == 's') {
+      downPressed = false;
+    }
+  }
 }
