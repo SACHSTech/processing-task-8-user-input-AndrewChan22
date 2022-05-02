@@ -223,6 +223,9 @@ public class Sketch extends PApplet {
     fltCircleY = mouseY;
   }
 
+  /**
+   * Handles multiple keys for movement of DVD logo
+   */
   public void keyPressed() {
     if (keyCode == LEFT || key == 'a')  {
       leftPressed = true;
@@ -238,6 +241,9 @@ public class Sketch extends PApplet {
     }
   }
 
+  /**
+   * Handles multiple keys for movement of DVD logo
+   */
   public void keyReleased() {
     if (keyCode == LEFT || key == 'a')  {
       leftPressed = false;
