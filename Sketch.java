@@ -30,7 +30,7 @@ public class Sketch extends PApplet {
    * Called once at the beginning of execution, put your size all in this method
    */
   public void settings() {
-	// put your size call here
+  // put your size call here
     size(1000, 800);
   }
 
@@ -66,7 +66,6 @@ public class Sketch extends PApplet {
 
     fltCircleX += circleSpeedX;
     fltCircleY += circleSpeedY;
-
 
     // randomly select from a list of dvd colours
     image(dvdColours[randNum], fltDvdX, fltDvdY);
